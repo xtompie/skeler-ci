@@ -56,10 +56,11 @@ function run($command)
     $command = is_array($command) ?  implode(' ', $command) : $command;
     info("run | $command");
     $status = null;
-    system($command, $status);
+    $return = trim(system($command, $status));
     if ($status !== 0) {
         error("run error | $command");
     }
+    return $return;
 }
 
 function success($msg)
